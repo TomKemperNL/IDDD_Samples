@@ -12,6 +12,7 @@ buildscript {
 allprojects {
 	apply plugin: 'java'
     apply plugin: 'idea'
+
     apply plugin: 'com.avast.gradle.docker-compose'
 }
 
@@ -91,12 +92,15 @@ project(':iddd_agilepm') {
     }
 }
 
+subprojects*.tasks*.withType(Test) {
+    dependsOn composeUp
+    finalizedBy composeDown
+}
+
 wrapper {
     gradleVersion = '5.1.1'
     distributionType = DistributionType.ALL
 }
 
-subprojects*.tasks*.withType(Test)*.configureEach {
-    dependsOn composeUp
-    finalizedBy composeDown
-}
+sourceCompatibility = JavaVersion.VERSION_1_7
+targetCompatibility = JavaVersion.VERSION_1_7

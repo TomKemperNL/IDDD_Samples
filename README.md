@@ -1,10 +1,9 @@
-_This file has been originally created by Vaughn Vernon.
-Some changes in content have been made in Section
-**Setup (with Docker Compose)** which was
-**Setup (with Docker)** in order to be consistend with
-modifications I did in this fork._
+**Note** *This file was originally created by Vaughn Vernon.
+Further changes have been made in order to provide an
+up-to-date documentation that considers modifications on the
+code.*
 
--------------------------------------------------------
+------------------------------------------------------------
 
 These are the sample Bounded Contexts from the book
 "Implementing Domain-Driven Design" by Vaughn Vernon:
@@ -67,7 +66,7 @@ Usage
 Requires
 --------
 
-- Java 7 (8+ does not work)
+- Java 7+
 - MySQL Client + Server
 - RabbitMQ
 

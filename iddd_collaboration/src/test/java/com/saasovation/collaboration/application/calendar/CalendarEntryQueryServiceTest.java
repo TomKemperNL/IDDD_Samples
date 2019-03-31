@@ -21,8 +21,6 @@ import com.saasovation.collaboration.application.ApplicationTest;
 import com.saasovation.collaboration.application.calendar.data.CalendarEntryData;
 import com.saasovation.collaboration.domain.model.DomainRegistry;
 import com.saasovation.collaboration.domain.model.calendar.CalendarEntry;
-import org.junit.Ignore;
-import org.junit.Test;
 
 public class CalendarEntryQueryServiceTest extends ApplicationTest {
 
@@ -94,9 +92,7 @@ public class CalendarEntryQueryServiceTest extends ApplicationTest {
         }
     }
 
-    @Ignore
-    @Test
-    public void ignoreTestTimeSpanningCalendarEntries() throws Exception {
+    public void testTimeSpanningCalendarEntries() throws Exception {
 
         CalendarEntry[] calendarEntries = this.calendarEntryAggregates();
 
