@@ -7,7 +7,7 @@ mysqlPassword="root"
 mysqlContainerName="iddd-mysql"
 mysqlPort="3306"
 
-rabbitmqNodeName="$(hostname)"
+rabbitmqNodeName="iddd-rabbitmq-node"
 rabbitmqContainerName="iddd-rabbitmq"
 rabbitmqManagementHttpPort="8080"
 
@@ -97,7 +97,6 @@ function waitForContainer() {
         sleep 1s
     done
 }
-
 
 requires 'docker'
 

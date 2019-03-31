@@ -1,6 +1,8 @@
+import static org.gradle.api.tasks.wrapper.Wrapper.DistributionType
 
 allprojects {
 	apply plugin: 'java'
+    apply plugin: 'idea'
 }
 
 subprojects {
@@ -25,14 +27,17 @@ project(':iddd_common') {
         compile group: 'com.google.code.gson', name: 'gson', version: '2.1'
         compile group: 'com.rabbitmq', name: 'amqp-client', version: '3.0.4'
         compile group: 'org.hibernate', name: 'hibernate', version: '3.2.7.ga'
-        compile group: 'org.springframework', name: 'spring', version: '2.5.6'
+        compile group: 'org.springframework', name: 'spring-core', version: '3.2.18.RELEASE'
+        compile group: 'org.springframework', name: 'spring-context', version: '3.2.18.RELEASE'
+        compile group: 'org.springframework', name: 'spring-tx', version: '3.2.18.RELEASE'
+        compile group: 'org.springframework', name: 'spring-hibernate3', version: '2.0.8'
         compile group: 'org.iq80.leveldb', name: 'leveldb', version: '0.5'
         compile group: 'org.aspectj', name: 'aspectjweaver', version: '1.7.2'
         compile group: 'javassist', name: 'javassist', version: '3.8.0.GA'
         compile group: 'javax.transaction', name: 'jta', version: '1.1'
 
         testCompile group: 'javax.persistence', name: 'persistence-api', version: '1.0.2' 
-        testCompile group: 'mysql', name: 'mysql-connector-java', version: '5.1.6' 
+        testCompile group: 'mysql', name: 'mysql-connector-java', version: '8.0.15'
         testCompile group: 'commons-dbcp', name: 'commons-dbcp', version: '1.4' 
     }
 }
@@ -40,13 +45,16 @@ project(':iddd_common') {
 project(':iddd_identityaccess') {
     dependencies {
         compile project(':iddd_common')
-        compile group: 'org.springframework', name: 'spring', version: '2.5.6'
+        compile group: 'org.springframework', name: 'spring-core', version: '3.2.18.RELEASE'
+        compile group: 'org.springframework', name: 'spring-context', version: '3.2.18.RELEASE'
+        compile group: 'org.springframework', name: 'spring-tx', version: '3.2.18.RELEASE'
+        compile group: 'org.springframework', name: 'spring-hibernate3', version: '2.0.8'
         compile group: 'javax.ws.rs', name: 'javax.ws.rs-api', version: '2.0-rc1'
         compile group: 'org.jboss.resteasy', name: 'resteasy-cache-core', version: '2.0.1.GA'
 
         testCompile files(this.project(':iddd_common').sourceSets.test.output)
         testCompile group: 'javax.persistence', name: 'persistence-api', version: '1.0.2'
-        testCompile group: 'mysql', name: 'mysql-connector-java', version: '5.1.6' 
+        testCompile group: 'mysql', name: 'mysql-connector-java', version: '8.0.15'
         testCompile group: 'commons-dbcp', name: 'commons-dbcp', version: '1.4' 
         testCompile group: 'javax.servlet', name: 'servlet-api', version: '2.5' 
         testCompile group: 'org.jboss.resteasy', name: 'tjws', version: '2.0.1.GA' 
@@ -60,7 +68,7 @@ project(':iddd_collaboration') {
 
         testCompile files(this.project(':iddd_common').sourceSets.test.output)
         testCompile group: 'javax.persistence', name: 'persistence-api', version: '1.0.2'
-        testCompile group: 'mysql', name: 'mysql-connector-java', version: '5.1.6' 
+        testCompile group: 'mysql', name: 'mysql-connector-java', version: '8.0.15'
         testCompile group: 'commons-dbcp', name: 'commons-dbcp', version: '1.4' 
     }
 }
@@ -71,4 +79,9 @@ project(':iddd_agilepm') {
 
         testCompile files(this.project(':iddd_common').sourceSets.test.output)
     }
+}
+
+wrapper {
+    gradleVersion = '5.1.1'
+    distributionType = DistributionType.ALL
 }
