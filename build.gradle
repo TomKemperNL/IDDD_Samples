@@ -1,8 +1,18 @@
 import static org.gradle.api.tasks.wrapper.Wrapper.DistributionType
 
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.avast.gradle:gradle-docker-compose-plugin:0.8.12'
+    }
+}
+
 allprojects {
 	apply plugin: 'java'
     apply plugin: 'idea'
+    apply plugin: 'com.avast.gradle.docker-compose'
 }
 
 subprojects {
@@ -84,4 +94,9 @@ project(':iddd_agilepm') {
 wrapper {
     gradleVersion = '5.1.1'
     distributionType = DistributionType.ALL
+}
+
+subprojects*.tasks*.withType(Test)*.configureEach {
+    dependsOn composeUp
+    finalizedBy composeDown
 }

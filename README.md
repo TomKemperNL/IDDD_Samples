@@ -1,3 +1,11 @@
+_This file has been originally created by Vaughn Vernon.
+Some changes in content have been made in Section
+**Setup (with Docker Compose)** which was
+**Setup (with Docker)** in order to be consistend with
+modifications I did in this fork._
+
+-------------------------------------------------------
+
 These are the sample Bounded Contexts from the book
 "Implementing Domain-Driven Design" by Vaughn Vernon:
 
@@ -13,15 +21,15 @@ the book.
 Points of Interest
 ==================
 
-The iddd_agilepm project uses a key-value store as
+The `iddd_agilepm` project uses a key-value store as
 its underlying persistence mechanism, and in particular
 is LevelDB. Actually the LevelDB in use is a pure Java
 implementation: https://github.com/dain/leveldb
 
-Currently iddd_agilepm doesn't employ a container of
+Currently `iddd_agilepm` doesn't employ a container of
 any kind (such as Spring).
 
-The iddd_collaboration project uses Event Sourcing and
+The `iddd_collaboration` project uses Event Sourcing and
 CQRS. It purposely avoids the use of an object-relational
 mapper, showing that a simple JDBC-based query engine
 and DTO matter can be used instead. This technique does
@@ -30,7 +38,7 @@ and require no configuration or annotations. It is not
 meant to be perfect.
 
 It may be helpful to make one additional mental note on
-the iddd_collaboration CQRS implementation. To keep the
+the `iddd_collaboration` CQRS implementation. To keep the
 example simple it persists the Event Sourced write model
 and the CQRS read model in one thread. Since two different
 stores are used--LevelDB for the Event Journal and MySQL
@@ -41,12 +49,12 @@ using the same data storage (and transaction) for both.
 Two different storage mechanisms were used purposely to
 demonstrate that they can be separate.
 
-The iddd_identityaccess project uses object-relational
+The `iddd_identityaccess` project uses object-relational
 mapping (Hibernate), but so as not to leave it "boring" it
 provides a RESTful client interface and even publishes
 Domain-Event notifications via REST (logs) and RabbitMQ.
 
-Finally the iddd_common project provides a number of reusable
+Finally the `iddd_common` project provides a number of reusable
 components. This is not an attempt to be a framework, but
 just leverages reuse to the degree that code copying doesn't
 liter each project. This is not a recommendation, but it
@@ -63,24 +71,19 @@ Requires
 - MySQL Client + Server
 - RabbitMQ
 
-Setup (with Docker)
--------------------
+Setup (with Docker Compose)
+---------------------------
 
-To make it easy to run the tests and it requirements,
-the `startContainers.sh` script is provided. Which
+To make it easy to run the tests and it requirements, the
+project provides a Docker Compose configuration file that
 will start a:
 - MySQL Server container
 - RabbitMQ Server container
 - RabbitMQ Management container
 
-If the `mysql` command is available, which is the mysql client,
-also the required SQL scripts will be imported into the MySQL
-Server.
-
-If you use the `startContainers.sh` script, you don't need
+If you use the Docker Compose, you don't need
 MySQL Server and RabbitMQ installed locally. Instead,
-Docker needs to be installed as the script will start
-MySQL and RabbitMQ in Docker containers.
+Docker needs to be installed.
 
 Build
 ------
@@ -94,7 +97,8 @@ You can build the project by running:
 This automatically downloads Gradle and builds the project, including running the tests.
 
 The Gradle build using Maven repositories was provided by
-Michael Andrews (Github michaelajr and Twitter @MichaelAJr).
+Michael Andrews (Github [michaelajr](https://github.com/michaelajr) and
+Twitter [@MichaelAJr](https://twitter.com/MichaelAJr)).
 Thanks much!
 
 
