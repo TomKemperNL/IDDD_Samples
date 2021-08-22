@@ -72,3 +72,6 @@ project(':iddd_agilepm') {
         testCompile files(this.project(':iddd_common').sourceSets.test.output)
     }
 }
+
+sourceCompatibility = JavaVersion.VERSION_1_7
+targetCompatibility = JavaVersion.VERSION_1_7
